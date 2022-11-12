@@ -66,32 +66,12 @@ class Map:
         self.drawInit = drawInit
 
 
-    def setPlayer(self):
-        player = turtle.Turtle()       #터틀의 함수를 가지고 옴
-        player.getscreen()      #화면에 표시
-        player.shape("turtle")
+        self.player_size = Vector2(self.gap.x/32, self.gap.y/32);
 
-        playerX = self.gap.x/32;
-        playerY = self.gap.y/32;
-        player.shapesize(playerX, playerY)
+        initX = self.player_size.x * 16
+        initY = self.player_size.y * 16        
 
-        initX = playerX * 16
-        initY = playerY * 16
+        self.palyer_init = Vector2(self.drawInit.x + initX, self.drawInit.y - initY)
+        self.palyer_gap = ((gap.x/32) * 16) + (initX)
 
-        player.up()
-        player.setpos(self.drawInit.x + initX, self.drawInit.y - initY)
-        player.setpos(self.drawInit.x + (initX*3), self.drawInit.y - initY)
-
-    def setEnemy(self, enemy):
-        self.enemy = enemy
-
-    def getMap(self):
-        return self.map
-
-map = Map(Vector2(10, 10), 5)
-
-map.setPlayer()
-
-
-
-input()
+        

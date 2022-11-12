@@ -1,34 +1,31 @@
 import turtle
-import drawmap
+import main
 
 #맵 그리기
-drawmap.draw();
+map = main.Map(main.Vector2(10, 10), 5)
 
 # 각종 설정
 #사용자(player)가 움직이는 거북이
 player = turtle.Turtle()       #터틀의 함수를 가지고 옴
 screen = player.getscreen()      #화면에 표시
 player.shape("turtle")
-player.shapesize(1.35, 1.35)
-player.speed(100)
+player.shapesize(map.player_size.x, map.player_size.y)
+player.speed(0)
 player.up();
+player.setpos(map.palyer_init.x, map.palyer_init.y)
 
-
-
-#turtle 의 상하이동
-movegap = 72;
 def left() :
    player.setheading(180)     
-   player.setx(player.xcor() - movegap)
+   player.setx(player.xcor() - map.palyer_gap)
 def right():
    player.setheading(0)       
-   player.setx(player.xcor() + movegap)
+   player.setx(player.xcor() + map.palyer_gap)
 def up() :
    player.setheading(90)      
-   player.sety(player.ycor() + movegap)
+   player.sety(player.ycor() + map.palyer_gap)
 def down() :
    player.setheading(270)     
-   player.sety(player.ycor() - movegap)
+   player.sety(player.ycor() - map.palyer_gap)
 
 
 # onkeypress(함수명, 키보드버튼명) :
